@@ -12,5 +12,8 @@ setup(
     name='django-gdpr-export',
     long_description=long_description,
     license='MIT',
-    keywords='django gdpr export template file'
+    keywords='django gdpr export template file',
+    classifiers=[
+        'Development Status :: 1 - Planning'
+    ]
 )
