@@ -2,7 +2,7 @@
 from django.db import models
 
 
-class GDPROutputField(models.FileField):
+class GDPRExportField(models.FileField):
     include = {}
     exclude = {}
 
@@ -16,4 +16,4 @@ class GDPROutputField(models.FileField):
 
         self.include = include
         self.exclude = exclude
-        super().__init__(**kwargs)
+        super(GDPRExportField, self).__init__(**kwargs)

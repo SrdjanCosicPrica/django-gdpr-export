@@ -1,0 +1,59 @@
+[
+{
+  "model": "account.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$36000$j4ddyfyaUBWw$SG7ykMbhztqJcfz7sgyiRpLNSJkNg6iX3kaB0y4vY8E=",
+    "last_login": "2018-05-21T18:35:41.817Z",
+    "is_superuser": true,
+    "first_name": "",
+    "last_name": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2018-05-20T19:49:26.699Z",
+    "username": "srdjan",
+    "created": "2018-05-20T19:49:26.699Z",
+    "modified": "2018-05-20T19:49:26.748Z",
+    "email": "a@a.com",
+    "avatar": "",
+    "last_activity": "2018-05-20T19:49:26.699Z",
+    "gdpr_data": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "account.fksetmodel",
+  "pk": 1,
+  "fields": {
+    "user": 1
+  }
+},
+{
+  "model": "account.foreignkeymodel",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "number_value": 0
+  }
+},
+{
+  "model": "account.m2msetmodel",
+  "pk": 1,
+  "fields": {
+    "user": [
+      1
+    ]
+  }
+},
+{
+  "model": "account.manytomanymodel",
+  "pk": 1,
+  "fields": {
+    "text_value": "f",
+    "user": [
+      1
+    ]
+  }
+}
+]
