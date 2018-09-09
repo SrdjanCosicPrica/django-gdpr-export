@@ -1,0 +1,7 @@
+{% extends "gdpr_export_base.html" %}
+{% load i18n %}
+{% load staticfiles %}
+{% block body %}
+    {% include "gdpr_export_overview.html" with names=names %}
+    {% include "gdpr_export_list.html" %}
+{% endblock %}

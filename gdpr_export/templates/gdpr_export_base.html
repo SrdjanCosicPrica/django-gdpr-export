@@ -1,0 +1,18 @@
+{% load i18n %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE|default:"en-gb" }}">
+    <head>
+        <meta charset="UTF-8">
+        <title>Hello</title>
+    </head>
+    <body>
+        <link
+            rel="stylesheet"
+            href="{% if download %}.{% endif %}{% static "gdpr_export/css/bootstrap.min.css" %}"
+        />
+        {% block body %}
+        {% endblock %}
+        <script src="{% if download %}.{% endif %}{% static "gdpr_export/js/bootstrap.bundle.js" %}"></script>
+    </body>
+</html>

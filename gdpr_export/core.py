@@ -1,5 +1,6 @@
 # coding=utf-8
 from django.db import models
+from django.template.loader import render_to_string
 
 from gdpr_export.models import GDPRExportField
 
@@ -19,38 +20,41 @@ def export_data(_object):
         raise Exception(
             'Found more than one field of type "GDPRExportField". Only one is permitted')
 
-    objects = _perform_export(_object, {})
-    print('objects', objects)
+    objects = {}
+    _perform_export(_object, objects)
+    rendered = render_to_string(
+        'gdpr_export.html',
+        {'objects': objects, 'names': list(objects.keys()), 'download': True}
+    )
+    with open('abc.html', 'w') as f:
+        f.write(rendered)
 
 
 def _perform_export(_object, traversed_objects):
     # For testing purposes
     assert isinstance(_object, models.Model)
     _type = type(_object).__name__
-    traversed_id_arr = traversed_objects.get(_type, [])
+    traversed = traversed_objects.get(_type, {})
+    traversed_id_arr = traversed.get('ids', [])
+    objects = traversed.get('objects', [])
     if _object.id in traversed_id_arr:
         return None
     traversed_id_arr.append(_object.id)
-    traversed_objects.update({_type: traversed_id_arr})
+    objects.append(_object)
+    traversed_objects.update({_type: {'ids': traversed_id_arr, 'objects': objects}})
 
-    data = [_object]
     for field in _object._meta.get_fields():
         if field.is_relation:
             related_data, is_queryset = _get_related_data(_object, field)
 
             if is_queryset:
                 for _obj in related_data:
-                    tmp = _perform_export(_obj, traversed_objects)
-                    if tmp is not None:
-                        data.extend(tmp)
+                    _perform_export(_obj, traversed_objects)
             else:
-                tmp = _perform_export(related_data, traversed_objects)
-                if tmp is not None:
-                    data.extend(tmp)
+                _perform_export(related_data, traversed_objects)
         else:
             # TODO: Check for File fields, save other field values
             pass
-    return data
 
 
 def _get_related_data(_object, field):

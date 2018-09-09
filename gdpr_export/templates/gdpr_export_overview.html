@@ -1,0 +1,10 @@
+{% load i18n %}
+{% block overview %}
+    <div class="card">
+        <ul class="list-group list-group-flush">
+            {% for name in names %}
+                <li class="list-group-item">{{ name }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
