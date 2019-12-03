@@ -6,7 +6,7 @@ djangorestframework==3.8.2
 factory-boy==2.11.1
 Faker==0.8.15
 idna==2.6
-Pillow==5.1.0
+Pillow==6.2.0
 pkginfo==1.4.2
 python-dateutil==2.7.3
 pytz==2018.4
