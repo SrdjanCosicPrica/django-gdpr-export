@@ -1,6 +1,6 @@
 certifi==2018.4.16
 chardet==3.0.4
-Django==1.11.28
+Django==1.11.29
 -e git+git@github.com:SrdjanCosicPrica/django-gdpr-export.git@7a0fc1182e23934e10ef485b6100278d2d410f77#egg=django_gdpr_export
 djangorestframework==3.9.1
 factory-boy==2.11.1
